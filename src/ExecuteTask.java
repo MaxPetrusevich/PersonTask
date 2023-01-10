@@ -19,7 +19,7 @@ public class ExecuteTask {
         finalTask(list);
     }
 
-    private static void finalTask(List<Person> list) {
+    public static void finalTask(List<Person> list) {
         List<String> stringList = list.stream()
                 .map(person -> person.getName() + " " + person.getSurname())
                 .collect(Collectors.toList());
@@ -29,7 +29,7 @@ public class ExecuteTask {
         }
     }
 
-    private static List<Person> createPersonList() {
+    public static List<Person> createPersonList() {
         List<Person> list = Stream
                 .generate(() -> new Person(new Random().nextInt(Data.AGE_BOUND) + Data.AGE_BOUND,
                         Data.NAMES[new Random().nextInt(Data.NAMES.length)],
@@ -42,7 +42,7 @@ public class ExecuteTask {
         return list;
     }
 
-    private static List<Person> streamTask(List<Person> list) {
+    public static List<Person> streamTask(List<Person> list) {
         list = list.stream()
                 .filter((Person person) -> person.getAge() < 21)
                 .peek(System.out::println)
@@ -52,7 +52,7 @@ public class ExecuteTask {
         return list;
     }
 
-    private static void writeIntoFile(List<Person> list) {
+    public static void writeIntoFile(List<Person> list) {
         File file = new File("src\\output.bin");
         if (!file.exists()) {
             try {
@@ -71,7 +71,7 @@ public class ExecuteTask {
         }
     }
 
-    private static List<Person> readInfoFromFile() {
+    public static List<Person> readInfoFromFile() {
         File file = new File("src\\output.bin");
         if (!file.exists()) {
             try {
